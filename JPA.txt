@@ -46,3 +46,47 @@ public class Account{
 
 문제 3-2.
 다음 중 Entity 클래스의 필드 선언 시 private long id로 선언하지 않고 private Long id으로 선언하는 이유를 설명하시오.
+
+-------------------------------------------------------------------------------------------
+
+4. 다음과 같은 결과화면이 출력되도록 밑줄 친 부분에 들어갈 알맞은 정답을 작성하시오.
+
+[결과화면]
+Hibernate: 
+    select
+        member0_.id as id1_0_0_,
+        member0_.age as age2_0_0_,
+        member0_.username as username3_0_0_,
+        member0_.team_id as team_id4_0_0_ 
+    from
+        Member member0_ 
+    where
+        member0_.id=?
+OOO
+
+Hibernate: 
+    select
+        team0_.id as id1_1_0_,
+        team0_.name as name2_1_0_ 
+    from
+        Team team0_ 
+    where
+        team0_.id=?
+OOO
+
+[문제]
+public class RunningTest {
+
+	public static void main(String[] args) {
+		
+		__________ em = DBUtil.getEntityManager();
+		_________________ tx = em.getTransaction();
+		tx.begin();
+		
+		
+		 Member m1 = em.____(__________, 1l);
+		 System.out.println(m1.getName());
+		 
+		 
+		 
+		 System.out.println(m1.getTeam().getName());
