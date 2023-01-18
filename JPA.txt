@@ -1,5 +1,36 @@
-다음 중 틀린 것을 고르시오.
+문제 1. 다음 중 틀린 것을 고르시오.
 1. @GeneratedValue(strategy = GenerationType.IDENTITY)은 oracle DB에서 사용이 불가하다.
 2. 영속성 컨테스트란 데이터베이스 사이에서 객체를 보관하는 가상의 데이터베이스 같은 것이다.
 3.에러 발생시 ManyToMany는 OneToOne, OneToMany, ManyToOne보다 곤란할 경우가 높다. 
 4. 지연로딩은 JOIN SQL로 한번에 연관된 객체까지 미리 조회 가능하며 sql실행을 한번에 진행한다.
+
+
+-------------------------------------------------------------------------------------------
+
+문제 2. 사용자(User)는 1개 이상의 계좌(Account)를 가질 수 있다.
+첨부사진을 참고하여 테이블을 만들 경우 아래 빈칸(______)을 채우시오.(oracle DB)
+
+public class User{
+	@Id @Column(name = "user_id")
+	private Long id;
+
+	@NonNull @Column(name = "user_name")
+	private String name;
+
+	@_______(mappedBy = "______")
+	private List<Account> accounts = new ArrayList<Member>();
+}
+
+public class Account{
+	@Id @Column(name = "account_id")
+	private Long id;
+
+	@NonNull @Column(name = "account_name")
+	private String accountName;
+
+	private int deposit;
+
+	@________(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	private User user;
+}
