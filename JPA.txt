@@ -18,7 +18,7 @@ public class User{
 	private String name;
 
 	@_______(mappedBy = "______")
-	private List<Account> accounts = new ArrayList<Member>();
+	private List<Account> accounts = new ArrayList<Account>();
 }
 
 public class Account{
